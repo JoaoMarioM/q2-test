@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { responsiveCircle, responsiveHeight, responsiveWidth } from '../../utils/responsive';
 import { ButtonPickerHeaderProps, InputStyleProps } from './interface';
 
 export const Container = styled.View`
@@ -7,18 +8,18 @@ export const Container = styled.View`
 
 export const InputContainer = styled.View<InputStyleProps>`
   width: 100%;
-  height: 48px;
-  border-radius: 8px;
+  height: ${responsiveHeight(48)}px;
+  border-radius: ${responsiveCircle(8)}px;
   border-color: ${({isFocus, error}) => error ? "#E01644" : isFocus ? "#006AFFB2" : "#CCCED9"};
-  border-width: 1px;
+  border-width: ${responsiveWidth(1)}px;
   flex-direction: row;
   position: relative;
 `;
 
 export const InputIconContainer = styled.View<InputStyleProps>`
-  width: 60px;
+  width: ${responsiveWidth(60)}px;
   height: 100%;
-  border-right-width: 1px;
+  border-right-width: ${responsiveWidth(1)}px;
   border-color: ${({isFocus}) => isFocus ? "#006AFFB2" : "#CCCED9"};
   align-items: center;
   justify-content: center;
@@ -28,38 +29,36 @@ export const InputIconContainer = styled.View<InputStyleProps>`
 export const InputText = styled.TextInput`
   width: 100%;
   box-sizing: border-box;
-  padding-left: 76px;
+  padding-left: ${responsiveWidth(76)}px;
 
-  /* font-family: 'IBM Plex Sans'; */
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: ${responsiveWidth(18)}px;
+  line-height: ${responsiveWidth(23)}px;
   color: #262833;
 `;
 
 export const Label = styled.Text`
-  /* font-family: 'Inter'; */
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: ${responsiveWidth(16)}px;
+  line-height: ${responsiveWidth(19)}px;
   color: #262833;
-  margin-bottom: 16px;
+  margin-bottom: ${responsiveHeight(16)}px;
 `;
 
 export const ButtonPicker = styled.TouchableOpacity`
   width: 100%;
   box-sizing: border-box;
-  padding-left: 76px;
+  padding-left: ${responsiveWidth(76)}px;
   justify-content: center;
 `;
 
 export const ButtonPickerText = styled.Text`
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23px;
+  font-size: ${responsiveWidth(18)}px;
+  line-height: ${responsiveWidth(23)}px;
   color: #262833;
 `;
 
@@ -68,29 +67,30 @@ export const PickerContainer = styled.View`
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* border-radius: 12px 12px 0 0; */
+  border-top-left-radius: ${responsiveCircle(12)}px;
+  border-top-right-radius: ${responsiveCircle(12)}px;
 `;
 
 export const PickerHeader = styled.View`
   width: 100%;
-  padding: 16px;
+  padding: ${responsiveHeight(16)}px;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
 `;
 
 export const ButtonPickerHeader = styled.TouchableOpacity<ButtonPickerHeaderProps>`
-  padding: 4px 6px;
+  padding: ${responsiveHeight(4)}px ${responsiveWidth(6)}px;
   background-color: ${({isBlue}) => isBlue ? "#006AFF" : "#FFF"};
-  border-radius: 4px;
-  border-width: 1px;
+  border-radius: ${responsiveCircle(4)}px;
+  border-width: ${responsiveWidth(1)}px;
   border-color: #006AFF;
 `;
 
 export const ButtonPickerHeaderText = styled.Text<ButtonPickerHeaderProps>`
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: ${responsiveWidth(14)}px;
+  line-height: ${responsiveWidth(24)}px;
   color: ${({isBlue}) => isBlue ? "#006AFF" : "#FFF"};
 `;
