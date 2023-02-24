@@ -43,6 +43,8 @@ export const AuthProvider = ({ children }: any) => {
         type: 'error',
         text1: 'OPS, Não foi possível realizar o login!',
       });
+    } finally {
+      setIsLoading(false)
     }
   }
 

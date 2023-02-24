@@ -6,7 +6,7 @@ import { AuthenticatedRoutes } from "./authenticated.routes";
 export const Routes = () => {
   const { getData, user } = useAuth()
 
-  // getData()
+  getData()
 
   if(user.uid) return <AuthenticatedRoutes/>;
 

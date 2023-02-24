@@ -14,7 +14,7 @@ export default function App() {
   return (
     <AuthProvider>
       <SafeAreaView style={{ flex: 1, backgroundColor: "#F7F8FA" }}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="dark-content" backgroundColor="#F7F8FA" />
         <Routes />
         <Toast />
       </SafeAreaView>

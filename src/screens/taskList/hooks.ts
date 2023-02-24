@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TagsData } from "../createTask/hooks";
 import { TaskProps } from "./interface";
 
@@ -9,12 +9,12 @@ export const useTaskList = () => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [typeModal, setTypeModal] = useState("delete");
   const [filterTag, setFilterTag] = useState<number[]>([]);
-  const [filterStatus, setFilterStatus] = useState("Pendente");
+  const [filterStatus, setFilterStatus] = useState("");
   const [idSelected, setIdselected] = useState<number>();
 
   const statusFilter = ["Finalizada", "Pendente"]
 
-  const handleCheck = (id: number) => {
+  const handleCheck = async (id: number) => {
     const newTaskList = [...tasks];
     const findIndexTask = newTaskList.findIndex(task => task.id === id);
 
@@ -25,6 +25,9 @@ export const useTaskList = () => {
     } else {
       newTaskList[findIndexTask].status = "Pendente"
     }
+
+    await AsyncStorage.setItem('@q2_task', JSON.stringify(newTaskList));
+
     setTasks(newTaskList);
   };
 
@@ -74,9 +77,9 @@ export const useTaskList = () => {
     }
 
     if(filterTag.length){
-      const _filter: any[] = []
+      const _filter: any[] = [] 
       filterTag.map(item => {
-        _filter.push(...filter.filter(_item => _item.tag === item))
+        _filter.push(...filter.filter(_item => Number(_item.tag) === Number(item)))
       })
 
       filter = _filter;
@@ -86,7 +89,7 @@ export const useTaskList = () => {
     setIsVisibleModal(false);
   }
 
-  const handleDeleteTask = () => {
+  const handleDeleteTask = async () => {
     const newTask = [...tasks];
     const findIndexTask = newTask.findIndex(item => item.id === idSelected);
 
@@ -95,6 +98,7 @@ export const useTaskList = () => {
       setTasks(newTask);
       setTasksFilter(newTask);
       setIsVisibleModal(false)
+      await AsyncStorage.setItem('@q2_task', JSON.stringify(newTask));
     }
   };
 

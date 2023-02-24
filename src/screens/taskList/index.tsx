@@ -51,7 +51,6 @@ export function TaskList() {
     useNavigation<NativeStackNavigationProp<AuthenticatedRoutesProps>>();
 
   const {
-    tasks,
     tasksFilter,
     isVisibleModal,
     typeModal,

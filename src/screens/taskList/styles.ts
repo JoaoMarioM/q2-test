@@ -191,7 +191,8 @@ export const ContainerModal = styled.View`
   background-color: #fff;
   position: absolute;
   bottom: 0;
-  border-radius: 12px 12px 0 0 ;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 `;
 
 export const TitleModal = styled.Text`

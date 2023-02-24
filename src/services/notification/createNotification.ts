@@ -8,10 +8,8 @@ const api = axios.create({
 });
 
 export const createNotification = async (task: string, dateScheduling: string) => {
-  console.log(task)
-  console.log(dateScheduling)
   try {
-    const res = await api.post("/notifications", {
+    await api.post("/notifications", {
       app_id: "1cd5379d-ec96-4c9d-8c13-baf5412d34c6",
       contents: {
           en: `Opaa, falta 1 minuto para encerrar a tarefa ${task}`
@@ -24,9 +22,7 @@ export const createNotification = async (task: string, dateScheduling: string) =
     ],
       send_after: dateScheduling,
     })
-    console.log(21, res.config)
   } catch (error: any) {
-    console.log(23, error.response)
     throw error;
   }
 }
