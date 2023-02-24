@@ -23,6 +23,6 @@ export const createNotification = async (task: string, dateScheduling: string) =
       send_after: dateScheduling,
     })
   } catch (error: any) {
-    throw error;
+    return error;
   }
 }
